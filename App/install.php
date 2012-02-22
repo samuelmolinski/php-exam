@@ -63,8 +63,8 @@ class DBinstaller extends PDO{
         }
 		
 		private function tb_answer() {
-			$sql = 'DROP TABLE IF EXISTS `tb_answer`;
-					CREATE TABLE IF NOT EXISTS `tb_answer` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_ANSWER.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_ANSWER.'` (
 					  `int_id_answer` int(11) NOT NULL auto_increment,
 					  `int_id_question` int(11) NOT NULL,
 					  `txt_answer` int(11) NOT NULL,
@@ -74,8 +74,8 @@ class DBinstaller extends PDO{
 			$this->PDO($sql);
 		}
 		private function tb_log() {
-			$sql = 'DROP TABLE IF EXISTS `tb_log`;
-					CREATE TABLE IF NOT EXISTS `tb_log` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_LOG.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_LOG.'` (
 					  `int_id_log` int(11) NOT NULL auto_increment,
 					  `int_id_user` int(11) NOT NULL,
 					  `dat_date` date NOT NULL,
@@ -85,8 +85,8 @@ class DBinstaller extends PDO{
 			$this->PDO($sql);
 		}
 		private function tb_question() {
-			$sql = 'DROP TABLE IF EXISTS `tb_question`;
-					CREATE TABLE IF NOT EXISTS `tb_question` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_QUESTION.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_QUESTION.'` (
 					  `int_id_question` int(11) NOT NULL auto_increment,
 					  `int_id_typequestion` int(11) NOT NULL,
 					  `txt_question` text NOT NULL,
@@ -104,8 +104,8 @@ class DBinstaller extends PDO{
 			$this->PDO($sql);
 		}
 		private function tb_topic() {
-			$sql = 'DROP TABLE IF EXISTS `tb_topic`;
-					CREATE TABLE IF NOT EXISTS `tb_topic` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_TOPIC.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_TOPIC.'` (
 					  `int_id_topic` int(11) NOT NULL auto_increment,
 					  `chr_name` varchar(100) NOT NULL,
 					  `txt_description` text NOT NULL,
@@ -114,8 +114,8 @@ class DBinstaller extends PDO{
 			$this->PDO($sql);
 		}
 		private function tb_typequestion() {
-			$sql = 'DROP TABLE IF EXISTS `tb_typequestion`;
-					CREATE TABLE IF NOT EXISTS `tb_typequestion` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_TYPEQUESTION.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_TYPEQUESTION.'` (
 					  `id_typequestion` int(11) NOT NULL auto_increment,
 					  `chr_nametypequestion` varchar(50) NOT NULL,
 					  `chr_description` varchar(200) NOT NULL,
@@ -124,8 +124,8 @@ class DBinstaller extends PDO{
 			$this->PDO($sql);
 		}
 		private function tb_typeuser() {
-			$sql = 'DROP TABLE IF EXISTS `tb_typeuser`;
-					CREATE TABLE IF NOT EXISTS `tb_typeuser` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_TYPEUSER.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_TYPEUSER.'` (
 					  `int_id_typeuser` int(11) NOT NULL,
 					  `chr_description` varchar(30) NOT NULL,
 					  PRIMARY KEY  (`int_id_typeuser`)
@@ -133,8 +133,8 @@ class DBinstaller extends PDO{
 			$this->PDO($sql);
 		}
 		private function tb_user() {
-			$sql = 'DROP TABLE IF EXISTS `tb_user`;
-					CREATE TABLE IF NOT EXISTS `tb_user` (
+			$sql = 'DROP TABLE IF EXISTS `'.TB_USER.'`;
+					CREATE TABLE IF NOT EXISTS `'.TB_USER.'` (
 					  `int_id_user` int(11) NOT NULL,
 					  `chr_email` varchar(60) NOT NULL,
 					  `chr_password` varchar(8) NOT NULL,
