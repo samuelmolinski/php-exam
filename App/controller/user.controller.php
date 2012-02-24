@@ -6,23 +6,23 @@ require_once (ABSPATH . '/DAO.php');
 
 class User_Controller extends DAO {
         
-        private $user;
+        public $user;
         private $controller;
         
         function __construct(){
                 $this->user = new User_Model();
-                $this->functions = new Functions();
+                //$this->functions = new Functions();
         }
 
         public function actionInsert(){
-                $this->user->username = $_POST['username'];
-                $this->user->email = $_POST['email'];
-                $this->user->password = md5($_POST['password']);
-                $this->user->typeuser = $_POST['typeuser']; 
-                $this->user->active = $_POST['active'];
+//                $this->user->username = $_POST['username'];
+//                $this->user->email = $_POST['email'];
+//                $this->user->password = md5($_POST['password']);
+//                $this->user->typeuser = $_POST['typeuser']; 
+//                $this->user->active = $_POST['active'];
                 
                 $this->table = TB_USERS;
-                $this->fields = "chr_email, chr_password, chr_username, id_typeuser, bln_active";
+                $this->fields = "chr_email, chr_password, chr_username, int_id_typeuser, bln_active";
                 $this->values = " 
 						NULL,
                         '".$this->user->email."', 
@@ -37,11 +37,11 @@ class User_Controller extends DAO {
         }
 
         public function actionUpdate(){
-                $this->user->username = $_POST['username'];
-                $this->user->email = $_POST['email'];
-                $this->user->password = md5($_POST['password']);
-                $this->user->typeuser = $_POST['typeuser']; 
-                $this->user->active = $_POST['active'];
+//                $this->user->username = $_POST['username'];
+//                $this->user->email = $_POST['email'];
+//                $this->user->password = md5($_POST['password']);
+//                $this->user->typeuser = $_POST['typeuser']; 
+//                $this->user->active = $_POST['active'];
                 
                 $this->table = TB_USERS;
                 $this->fields = "
