@@ -15,8 +15,6 @@ class AllTests extends TestSuite {
     //put your code here
     public function AllTests() {
         $this->TestSuite('All tests');
-        $this->addFile(ABSPATH .'testing/Test_User_Model.php');
-        $this->addFile(ABSPATH .'testing/Test_User_Controller.php');
     }
 }
 

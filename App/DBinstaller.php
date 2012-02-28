@@ -22,7 +22,7 @@ class DBinstaller extends PDO{
                 if (!isset(self::$conn)) {
                         try {
                 		//parent::__construct("mysql:dbname=$db_name;host=$connect", $root, $pass);
-                        self::$conn = new DBinstaller("mysql:dbname=". DB_NAME .";host=". DB_HOST , "root", "");
+                        self::$conn = new DBinstaller("mysql:dbname=". DB_NAME .";host=". DB_HOST , DB_USER, DB_PASSWORD);
                 }
                                 
                         catch (PDOException $e) {
@@ -126,7 +126,7 @@ class DBinstaller extends PDO{
 		private function tb_typeuser() {
 			$sql = 'DROP TABLE IF EXISTS `'.TB_TYPEUSER.'`;
 					CREATE TABLE IF NOT EXISTS `'.TB_TYPEUSER.'` (
-					  `int_id_typeuser` int(11) NOT NULL,
+					  `int_id_typeuser` int(11) NOT NULL auto_increment,
 					  `chr_description` varchar(30) NOT NULL,
 					  PRIMARY KEY  (`int_id_typeuser`)
 					);';
@@ -135,10 +135,10 @@ class DBinstaller extends PDO{
 		private function tb_user() {
 			$sql = 'DROP TABLE IF EXISTS `'.TB_USER.'`;
 					CREATE TABLE IF NOT EXISTS `'.TB_USER.'` (
-					  `int_id_user` int(11) NOT NULL,
+					  `int_id_user` int(11) NOT NULL auto_increment ,
+					  `chr_username` varchar(60) NOT NULL,
 					  `chr_email` varchar(60) NOT NULL,
 					  `chr_password` varchar(8) NOT NULL,
-					  `chr_username` varchar(60) NOT NULL,
 					  `int_id_typeuser` int(11) NOT NULL,
 					  `bln_active` tinyint(1) NOT NULL,
 					  PRIMARY KEY  (`int_id_user`),
