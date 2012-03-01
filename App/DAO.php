@@ -24,15 +24,18 @@ class DAO extends PDO {
 	private $root = DB_USER;
 	private $pass = DB_PASSWORD;
 	private static $conn;
+	private static $error;
 
-	function DAO($connect, $root = '', $pass = '') {
-		parent::__construct($connect, $root, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	function DAO($connect, $root = '', $pass = '', $options = array()) {		
+		if (PDO_DEBUG){$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);}
+		parent::__construct($connect, $root, $pass, $options);
 	}
 
 	public static function getDAO() {
 		if (!isset(self::$conn)) {
-			try {
-				self::$conn = new DAO("mysql:dbname=" . DB_NAME . ";host=" . DB_HOST, DB_USER, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			try {	
+				if (PDO_DEBUG){$PDO_options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);} else {$PDO_options = array();}
+				self::$conn = new DAO("mysql:dbname=" . DB_NAME . ";host=" . DB_HOST, DB_USER, DB_PASSWORD, $PDO_options);
 			} catch (PDOException $e) {
 				throw new Exception("Error to Connect: " . $e->getMessage() . " Code: " . $e->getCode());
 			}
@@ -42,6 +45,7 @@ class DAO extends PDO {
 	}
 
 	public static function PDO($sql) {
+		if (PDO_DEBUG) {inspect($sql);}
 		try {
 			self::$conn = DAO::getDAO();
 			$stm = self::$conn->prepare($sql);
@@ -54,8 +58,10 @@ class DAO extends PDO {
 				return array();
 			}
 		} catch (PDOException $e) {
-			echo "Exception Error: " . $e->getMessage() . " Code: " . $e->getCode();
+			self::$error = $e;
+			echo '<span>'.self::$error->getMessage() . " # " . self::$error->getCode() . '</span>';
 		}
+		
 	}
 
 	public function setId($id) {
@@ -64,6 +70,15 @@ class DAO extends PDO {
 
 	public function getId() {
 		return $this->id;
+	}
+
+	public function getError() {
+		if (is_a(self::$error, 'PDOException')) {
+			return self::$error->getCode();
+		} else {
+			return new PDOException();
+		}
+		
 	}
 
 	public function select() {
@@ -78,25 +93,27 @@ class DAO extends PDO {
 		} else {
 			$sql = "SELECT {$this->fields} {$date} FROM {$this->table} {$where} {$like} ORDER BY {$padrao} {$limit}";
 		}
-		
-		inspect($sql);
+		//inspect($sql);
 		
 		return self::PDO($sql);
 	}
 
 	public function insert() {
 		$sql = "INSERT INTO {$this->table} ({$this->fields}) VALUES ({$this->values})";
-		inspect($sql);
+		//inspect($sql);
+		$r = '; SELECT LAST_INSERT_ID();';
+		//$r = mysql_insert_id();
+		//inspect($r);
 		return self::PDO($sql);
 	}
 
 	public function update() {
-		$sql = "UPDATE {$this->table} SET {$this->fields} WHERE id = {$this->getId()}";
+		$sql = "UPDATE {$this->table} SET {$this->fields} WHERE {$this->where}";
 		return self::PDO($sql);
 	}
 
 	public function delete() {
-		$sql = "DELETE FROM {$this->table} WHERE id = {$this->getId()}";
+		$sql = "DELETE FROM {$this->table} WHERE {$this->where}";
 		return self::PDO($sql);
 	}
 
