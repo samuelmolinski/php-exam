@@ -6,16 +6,16 @@ if ( !defined('ABSPATH') ){ define('ABSPATH', dirname(__FILE__) . '/');}
 //echo 'ABSPATH = ' .ABSPATH;
 
 //Database Settings
-define("DB_HOST", "localhost");
-define("DB_NAME", "phpexam");
-define("DB_USER", "admin");
-define("DB_PASSWORD", "1234");
+//define("DB_HOST", "localhost");
+//define("DB_NAME", "phpexam");
+//define("DB_USER", "admin");
+//define("DB_PASSWORD", "1234");
 
 //Database Settings for wodoto
-//define("DB_HOST", "localhost");
-//define("DB_NAME", "wodoton_phpexam");
-//define("DB_USER", "wodoton_admin");
-//define("DB_PASSWORD", "sjm120182");
+define("DB_HOST", "localhost");
+define("DB_NAME", "wodoton_phpexam");
+define("DB_USER", "wodoton_admin");
+define("DB_PASSWORD", "sjm120182");
 
 //Database Table Settings
 define("TB_USER","tb_user");

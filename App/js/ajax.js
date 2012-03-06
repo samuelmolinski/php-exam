@@ -3,6 +3,7 @@
  */
 
 function update(type){
+	console.debug('ajax fired: ' + type)
 	$.ajax({
 		type: 'GET',
 		url: 'ajax.php',
@@ -28,7 +29,7 @@ function update(type){
 			qAnswersCReady : $("#qAnswersCReady").val(),
 			//Incorrect Answers
 			qAnswerTextI : $("#qAnswerTextI").val(),
-			qAnswersI : $("#qAnswersI").val(),
+			qAnswersI : $("#qAnswerI").val(),
 			qAddAnswerI : $("#qAddAnswerI").val(),
 			qEditAnswerI : $("#qEditAnswerI").val(),
 			qAnswersIReady : $("#requestType").val()

@@ -64,10 +64,9 @@ class Log_Model {
 		//add validation based on $name
 		switch ($name) {
 			case 'alteration' :
+			case 'date':
 				return (string) $value;
 				break;
-			case 'date':
-				return (float) $value;
 			default:					
 				return (int)$value;
 

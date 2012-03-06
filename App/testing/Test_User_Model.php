@@ -4,7 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-require_once ABSPATH .'testing/simpleTest/autorun.php';
+require_once ABSPATH .'testing/simpletest/autorun.php';
 require_once ABSPATH .'model/user.model.php';
 
 /**

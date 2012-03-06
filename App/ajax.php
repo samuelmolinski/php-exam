@@ -75,25 +75,25 @@
 		    case 'addTopic':
 				addTopic($data, $return);
 		        break;
-		    case 'readyQuestion':
+		    case 'qStatementReady':
 				readyQuestion($data, $return);
 		        break;
-		    case 'addAnswerCorrect':
+		    case 'qAddAnswerC':
 				addAnswerCorrect($data, $return);
 		        break;
-		    case 'editAnswerCorrect':
+		    case 'qEditAnswerC':
 				editAnswerCorrect($data, $return);
 		        break;
-		    case 'readyAnswerCorrect':
+		    case 'qAnswersCReady':
 				readyAnswerCorrect($data, $return);
 		        break;
-		    case 'addAnswerIncorrect':
+		    case 'qAddAnswerI':
 				addAnswerIncorrect($data, $return);
 		        break;
-		    case 'editAnswerIncorrect':
+		    case 'qEditAnswerI':
 				editAnswerIncorrect($data, $return);
 		        break;
-		    case 'readyAnswerIncorrect':
+		    case 'qAnswersIReady':
 				readyAnswerIncorrect($data, $return);
 		        break;
 		    case 'updateSimilarQuestion':
