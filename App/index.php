@@ -143,7 +143,7 @@
 				</form>
 			<footer>
 				<p>
-					&copy; Copyright  by Samuel Molinski and Eduardo Chaves
+					&copy; Copyright  by Samuel Molinski
 				</p>
 			</footer>
 			<div class="clear"></div>

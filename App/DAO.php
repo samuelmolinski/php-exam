@@ -100,10 +100,6 @@ class DAO extends PDO {
 
 	public function insert() {
 		$sql = "INSERT INTO {$this->table} ({$this->fields}) VALUES ({$this->values})";
-		//inspect($sql);
-		$r = '; SELECT LAST_INSERT_ID();';
-		//$r = mysql_insert_id();
-		//inspect($r);
 		return self::PDO($sql);
 	}
 

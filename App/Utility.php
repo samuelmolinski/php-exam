@@ -19,12 +19,13 @@ class Utility {
 	
 	public function formatArraySingle($list, $class) {
 		//returning values as a single object or an array of those objects
+		//if($class == 'Question_Model') {inspect($list);}
 		$return = array();
 		//create array of objects and propogate with data
 		foreach ($list as $item) {
 			unset ($attr);
 			//create index array of vales
-			foreach ($item as $value) {
+			foreach ($item as $key => $value) {
 				$attr[] = $value;
 			}
 			//push array of values for the conctructor to handle

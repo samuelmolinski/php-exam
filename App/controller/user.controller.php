@@ -1,4 +1,5 @@
 ﻿<?php
+
 require_once (ABSPATH . '/model/user.model.php');
 require_once (ABSPATH . '/config.php');
 require_once (ABSPATH . '/DAO.php');
@@ -7,7 +8,6 @@ require_once (ABSPATH . '/Utility.php');
 class User_Controller extends DAO {
 
 	public $user;
-	private $controller;
 
 	function __construct($param = NULL) {		
 		parent::__construct("mysql:dbname=" . DB_NAME . ";host=" . DB_HOST, DB_USER, DB_PASSWORD);
@@ -16,7 +16,6 @@ class User_Controller extends DAO {
 		} else {
 			$this->user = new User_Model();
 		}
-		//$this->functions = new Functions();
 	}
 
 	public function actionInsert() {

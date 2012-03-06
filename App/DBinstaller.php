@@ -67,7 +67,7 @@ class DBinstaller extends PDO{
 					CREATE TABLE IF NOT EXISTS `'.TB_ANSWER.'` (
 					  `int_id_answer` int(11) NOT NULL auto_increment,
 					  `int_id_question` int(11) NOT NULL,
-					  `txt_answer` int(11) NOT NULL,
+					  `txt_answer` longtext NOT NULL,
 					  `bln_correct` tinyint(1) NOT NULL,
 					  PRIMARY KEY  (`int_id_answer`)
 					);';
@@ -78,8 +78,10 @@ class DBinstaller extends PDO{
 					CREATE TABLE IF NOT EXISTS `'.TB_LOG.'` (
 					  `int_id_log` int(11) NOT NULL auto_increment,
 					  `int_id_user` int(11) NOT NULL,
-					  `dat_date` date NOT NULL,
-					  `chr_alteration` varchar(300) NOT NULL,
+					  `int_ref_type` int(11) NOT NULL,
+					  `int_type_id` int(11) NOT NULL,
+					  `dat_date` bigint NOT NULL,
+					  `chr_alteration` longtext NOT NULL,
 					  PRIMARY KEY  (`int_id_log`)
 					);';
 			$this->PDO($sql);
@@ -89,15 +91,15 @@ class DBinstaller extends PDO{
 					CREATE TABLE IF NOT EXISTS `'.TB_QUESTION.'` (
 					  `int_id_question` int(11) NOT NULL auto_increment,
 					  `int_id_typequestion` int(11) NOT NULL,
-					  `txt_question` text NOT NULL,
+					  `txt_question` longtext NOT NULL,
 					  `chr_versionphp` varchar(10) NOT NULL,
 					  `bln_depreciated` tinyint(1) NOT NULL,
 					  `flo_difficulty` float NOT NULL,
 					  `int_flagged` int(1) NOT NULL,
-					  `int_id_topic` int(11) NOT NULL,
 					  `bln_eval` tinyint(1) NOT NULL,
-					  `txt_eval` text NOT NULL,
-					  `txt_explanation` text NOT NULL,
+					  `txt_eval` longtext,
+					  `int_id_topic` int(11) NOT NULL,
+					  `txt_explanation` longtext NOT NULL,
 					  `int_id_author` int(11) NOT NULL,
 					  PRIMARY KEY  (`int_id_question`)
 					);';
@@ -108,7 +110,7 @@ class DBinstaller extends PDO{
 					CREATE TABLE IF NOT EXISTS `'.TB_TOPIC.'` (
 					  `int_id_topic` int(11) NOT NULL auto_increment,
 					  `chr_name` varchar(100) NOT NULL,
-					  `txt_description` text NOT NULL,
+					  `txt_description` longtext NOT NULL,
 					  PRIMARY KEY  (`int_id_topic`)
 					);';
 			$this->PDO($sql);

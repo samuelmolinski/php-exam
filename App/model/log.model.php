@@ -1,25 +1,25 @@
 <?php
 
-class Question_Model{
-        
-	private $id; //(int)
-	private $id_typequestion; //(int)
-	private $versionphp; //(string)
-	private $question; //(string)
-	private $depreciated; //(boolen)
-	private $difficulty; //(float)
-	private $flagged; //(int)
-	private $bln_eval; //(boolen)
-	private $eval; //(string)
-	private $id_topic; //(int)
-	private $explaination; //(string)
-	private $id_author; //(int)
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-	private $attr = array('id'=>NULL, 'id_typequestion'=>NULL, 
-					'question'=>NULL, 'versionphp'=>NULL, 'depreciated'=>NULL, 
-					'difficulty'=>NULL, 'flagged'=>NULL, 'bln_eval'=>NULL, 
-					'eval'=>NULL, 'id_topic'=>NULL, 'explaination'=>NULL, 
-					'id_author'=>NULL);
+/**
+ * Description of log
+ *
+ * @author Samuel
+ */
+class Log_Model {
+	
+	private $id; //(int)
+	private $id_user; //(int)
+	private $ref_type; //(int) - example: 0 Misc, 1 Question, 2 Answer, etc
+	private $type_id; //(int) - this refers to the id of the question or answer
+	private $date; //(int)
+	private $alteration; //(string)
+
+	private $attr = array('id'=>NULL, 'id_user'=>NULL, 'ref_type'=>NULL, 'type_id'=>NULL, 'date'=>NULL, 'alteration'=>NULL);
 
 	function __construct($param = NULL) {			
 		$this->put($param);
@@ -63,19 +63,13 @@ class Question_Model{
 	private function validate($name, $value) {
 		//add validation based on $name
 		switch ($name) {
-			case 'id' :
-			case 'id_typequestion' :
-			case 'flagged' :
-			case 'id_topic' :
-			case 'id_author' :
-				return (int) $value;
+			case 'alteration' :
+				return (string) $value;
 				break;
-			case 'bln_depreciated' :
-			case 'bln_eval' :
-				return (bool) $value;
-				break;
+			case 'date':
+				return (float) $value;
 			default:					
-				return (string)$value;
+				return (int)$value;
 
 		}
 		
@@ -114,7 +108,6 @@ class Question_Model{
 	public function __toString() {
 		return json_encode(get_object_vars($this));
 	}
-            
 }
 
 ?>
