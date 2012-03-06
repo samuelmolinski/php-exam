@@ -28,7 +28,7 @@ class Test_Typequestion_Controller extends UnitTestCase {
 		$typequestionC1 = null;
 		$this->assertNull($typequestionC1, "Destroying typequestion.controller");
 
-		$attr = array('id'=> 1, 'name'=> 'super blah', 'description'=> 'mojo big bad');
+		$attr = array('id'=> 1, 'name'=> 'admin', 'description'=> 'mojo big bad');
 		$typequestionC1 = new Typequestion_Controller($attr);
 		//DO NOT MODIFY $typequestionC1 BELOW THIS LINE: $typequestionC1 will be static for comparision 
 		
@@ -49,36 +49,36 @@ class Test_Typequestion_Controller extends UnitTestCase {
 		//check if works with objects
 		$this->assertEqual($typequestionM1->name, $typequestionM2->name, "typequestionM1->id_typetypequestion = to typequestionM2->id_typetypequestion");
 		$this->assertEqual($typequestionM1->description, $typequestionM2->description, "typequestionM1->description = to typequestionM2->typequestion");
-//		
-//		echo("<h3>Testing Typequestion_Controller->actionUpdate</h3>");
-//		$attr2 = array('id'=> 1, 'name'=> 90, 'description'=> 89);
-//		$typequestionC2->typequestion->put($attr2);
-//		$typequestionC2->actionUpdate();
-//		$typequestionM3 = $typequestionC2->typequestion;
-//		$this->assertNotEqual($typequestionM1->name, $typequestionM3->name, '$typequestionM1->name, $typequestionM3->name');
-//		$this->assertNotEqual($typequestionM1->description, $typequestionM3->description, '$typequestionM1->description, $typequestionM3->description');
-//		$typequestionC2 = NULL;
-//		$typequestionM3 = NULL;
-//	
-//		echo("<h3>Testing Typequestion_Controller->actionList</h3>");	
-//		$typequestionC3 = new Typequestion_Controller();
-//		//Do array magic
-//		$list = $typequestionC3->actionList();
-//		$listUnique = array_unique($list);
-//		$problems = array_diff($list, $listUnique);
-//		$this->assertEqual(count($problems), '0', 'Should be 0');
-//		$typequestionC3 = NULL;
-//		
-//		echo("<h3>Testing Typequestion_Controller->actionSearch array merge</h3>");
-//		$query = array('where' => "int_id_typequestion = 1", "like" => '', "limit" => '');
-//		$typequestionM4 = $typequestionC1->actionSearch($query);
-//		$this->assertIsA($typequestionM4, 'Typequestion_Model');		
-//		
-//		echo("<h3>Testing Typequestion_Controller->actionDelete</h3>");
-//		$typequestionM4 = $typequestionC1->actionDelete('1');
-//		$typequestionM5 = $typequestionC1->actionSearch($query);
-//		//inspect($typequestionM5);
-//		$this->assertNull($typequestionM5);
+		
+		echo("<h3>Testing Typequestion_Controller->actionUpdate</h3>");
+		$attr2 = array('id'=> 1, 'name'=> 'user', 'description'=> 'more of the same testing text');
+		$typequestionC2->typequestion->put($attr2);
+		$typequestionC2->actionUpdate();
+		$typequestionM3 = $typequestionC2->typequestion;
+		$this->assertNotEqual($typequestionM1->name, $typequestionM3->name, '$typequestionM1->name, $typequestionM3->name');
+		$this->assertNotEqual($typequestionM1->description, $typequestionM3->description, '$typequestionM1->description, $typequestionM3->description');
+		$typequestionC2 = NULL;
+		$typequestionM3 = NULL;
+	
+		echo("<h3>Testing Typequestion_Controller->actionList</h3>");	
+		$typequestionC3 = new Typequestion_Controller();
+		//Do array magic
+		$list = $typequestionC3->actionList();
+		$listUnique = array_unique($list);
+		$problems = array_diff($list, $listUnique);
+		$this->assertEqual(count($problems), '0', 'Should be 0');
+		$typequestionC3 = NULL;
+		
+		echo("<h3>Testing Typequestion_Controller->actionSearch array merge</h3>");
+		$query = array('where' => "id_typequestion = 1", "like" => '', "limit" => '');
+		$typequestionM4 = $typequestionC1->actionSearch($query);
+		$this->assertIsA($typequestionM4, 'Typequestion_Model');		
+		
+		echo("<h3>Testing Typequestion_Controller->actionDelete</h3>");
+		$typequestionM4 = $typequestionC1->actionDelete('1');
+		$typequestionM5 = $typequestionC1->actionSearch($query);
+		//inspect($typequestionM5);
+		$this->assertNull($typequestionM5);
 		
 	}
 

@@ -38,8 +38,8 @@
         $test->addFile(ABSPATH .'testing/Test_Typequestion_Model.php');
         $test->addFile(ABSPATH .'testing/Test_Typequestion_Controller.php');
 		
-        //$test->addFile(ABSPATH .'testing/Test_Typeuser_Model.php');
-        //$test->addFile(ABSPATH .'testing/Test_Typeuser_Controller.php');
+        $test->addFile(ABSPATH .'testing/Test_Typeuser_Model.php');
+        $test->addFile(ABSPATH .'testing/Test_Typeuser_Controller.php');
 	}
 
 	function installTestDB() {

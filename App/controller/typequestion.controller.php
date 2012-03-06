@@ -1,6 +1,6 @@
 <?php
 
-require_once (ABSPATH . '/model/user.model.php');
+require_once (ABSPATH . '/model/typequestion.model.php');
 require_once (ABSPATH . '/config.php');
 require_once (ABSPATH . '/DAO.php');
 require_once (ABSPATH . '/Utility.php');
@@ -20,7 +20,7 @@ class Typequestion_Controller extends DAO{
 
 	public function actionInsert() {
 		$this->table = TB_TYPEQUESTION;
-		$this->fields = "chr_nametypequestion, chr_description, ";
+		$this->fields = "chr_nametypequestion, chr_description";
 		$this->values = "'" . $this->typequestion->name . 
 						"','" . $this->typequestion->description . "'";
 

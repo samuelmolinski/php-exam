@@ -120,7 +120,7 @@ class DBinstaller extends PDO{
 					CREATE TABLE IF NOT EXISTS `'.TB_TYPEQUESTION.'` (
 					  `id_typequestion` int(11) NOT NULL auto_increment,
 					  `chr_nametypequestion` varchar(50) NOT NULL,
-					  `chr_description` varchar(200) NOT NULL,
+					  `chr_description` varchar(500) NOT NULL,
 					  PRIMARY KEY  (`id_typequestion`)
 					);';
 			$this->PDO($sql);
@@ -129,7 +129,8 @@ class DBinstaller extends PDO{
 			$sql = 'DROP TABLE IF EXISTS `'.TB_TYPEUSER.'`;
 					CREATE TABLE IF NOT EXISTS `'.TB_TYPEUSER.'` (
 					  `int_id_typeuser` int(11) NOT NULL auto_increment,
-					  `chr_description` varchar(30) NOT NULL,
+					  `chr_nametypeuser` varchar(50) NOT NULL,
+					  `chr_description` varchar(500) NOT NULL,
 					  PRIMARY KEY  (`int_id_typeuser`)
 					);';
 			$this->PDO($sql);

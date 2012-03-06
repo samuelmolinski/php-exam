@@ -1,6 +1,6 @@
 <?php
 
-require_once (ABSPATH . '/model/user.model.php');
+require_once (ABSPATH . '/model/topic.model.php');
 require_once (ABSPATH . '/config.php');
 require_once (ABSPATH . '/DAO.php');
 require_once (ABSPATH . '/Utility.php');
